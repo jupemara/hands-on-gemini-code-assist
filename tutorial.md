@@ -78,16 +78,6 @@ git submodule update --init --recursive
 
 Python の仮想環境を作成して, ADK をインストールします
 
-### 仮想環境の作成
-
-```bash
-python -m venv .venv
-```
-
-```bash
-source .venv/bin/activate
-```
-
 ### ADK のインストール
 
 ```bash
@@ -98,33 +88,40 @@ pip install google-adk
 
 Gemini Code Assist を使って最初のエージェントを作成してみましょう
 
-### 4-1. 挨拶エージェントの作成
+### 挨拶エージェントの作成
 
 ```
-シンプルな挨拶エージェントを agents/greeting_agent.py に作成してください。
-ユーザーの名前を受け取って挨拶を返す関数を実装してください。
+シンプルな挨拶エージェントを agents/greeting/agent.py に作成してください
+ユーザーの名前を受け取って挨拶を返す関数を実装してください
+- gemini 2.5 flash を使います
+- `adk run` コマンドを使って実行
+- `adk web --port 8080` コマンドを使って開発者が動作確認を行います
 ```
 
-Gemini Code Assist が生成したコードを確認し、必要に応じて修正を依頼します。
-
-### 4-2. エージェントの実行
+### エージェントの実行
 
 生成されたエージェントを実行してみましょう。
 
 ```bash
-python agents/greeting_agent.py
+adk run agents/greeting/agent.py
 ```
 
-### 4-3. コードの改善を依頼
+### コードの改善
 
 Gemini Code Assist に以下のような改善を依頼してみましょう：
 
 ```
-このエージェントに、時間帯によって挨拶を変える機能を追加してください。
-朝（5-11時）、昼（12-17時）、夜（18-4時）で挨拶を変えてください。
+時間帯によって挨拶を変える機能を追加します
+- 朝 ( 5-11時 )
+- 昼 ( 12-17時 )
+- 夜 ( 18-4時 ) で挨拶を変えてください
 ```
 
-改善されたコードを確認し、再度実行してみます。
+### localhost:8080 にて動作確認
+
+```bash
+adk web --port 8080
+```
 
 ## ステップ 5: タスク管理エージェントを作る
 
