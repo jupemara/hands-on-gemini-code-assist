@@ -12,25 +12,44 @@ Gemini Code Assist に指示を出しながら, 実際にコードを生成/改�
 - Gemini との対話でコードを生成する方法
 - ドキュメントを参照させながら開発する方法
 
-## ステップ 2: Gemini Code Assist のセットアップ
+## Google アカウント認証
 
-Cloud Shell で Gemini Code Assist を使えるように設定します。
+Google Account の確認です
 
 ```bash
-# Gemini CLI のインストール（Cloud Shell には既にインストールされている場合があります）
-gcloud components install gemini
-
-# 認証
-gcloud auth login
+gcloud auth list
 ```
 
-Gemini Code Assist が使えることを確認します。
+認証済みアカウントが正しくコンフィグに設定されているか確認します
+
+```bash
+gcloud config get-value account
+```
+
+もし
+
+```
+Credentialed Accounts
+
+ACTIVE: *
+ACCOUNT: hogehoge@example.com
+```
+
+のようにログイン済みのアカウントがうまく出ていない場合は,
+
+```bash
+gcloud auth application-default login --no-launch-browser
+```
+
+を実行してログインを行います (ログイン URL が出てくるので, URL をクリック, verification code を入力しましょう)
+
+## Gemini CLI がインストールされているか確認
+
+`gemini` コマンドが使えることを確認します
 
 ```bash
 gemini --version
 ```
-
-不要!! なぜなら勝手に gemini コマンド入っとる
 
 ## ステップ 3: ADK ドキュメントを確認する
 
