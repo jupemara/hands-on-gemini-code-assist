@@ -84,6 +84,10 @@ Python の仮想環境を作成して, ADK をインストールします
 python -m venv .venv
 ```
 
+```bash
+source .venv/bin/activate
+```
+
 ### ADK のインストール
 
 ```bash
