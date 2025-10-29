@@ -122,208 +122,82 @@ Gemini Code Assist に以下のような改善を依頼してみましょう：
 ### localhost:8080 にて動作確認
 
 ```bash
-adk web --port 8080
+cd agents && adk web --port 8080
 ```
 
-## ステップ 5: タスク管理エージェントを作る
+## タスク管理エージェントを作る
 
-次は、もう少し実用的なタスク管理エージェントを Gemini Code Assist と一緒に作ってみましょう。
-
-### 5-1. エージェントの仕様を伝える
-
-Gemini Code Assist に以下のように指示します：
+お次は, もう少し実用的なタスク管理エージェントを Gemini Code Assist と一緒に作ってみましょう
 
 ```
-agents/task_manager_agent.py というファイルを作成してください。
-以下の機能を持つタスク管理エージェントを実装してください：
+/clear
+```
 
-- タスクの追加（タイトルと説明）
+このコマンドで先程までのタスクのコンテキストをリセットしておきましょう
+
+### まずはエージェントの仕様を考える
+
+まずはエージェントと仕様に詰めてみましょう
+
+```
+agents/task_manager/readme.md にタスク管理エージェントの仕様をファイル作成します
+
+## 機能
+
+- タスクの追加
 - タスク一覧の表示
-- タスクの完了マーク
-- 未完了タスクのみの表示
+- 完了したタスクの完了マーク
+- 未完了タスクのみ表示するか完了タスクのみ表示するかユーザが決められる
+- 完了タスクに関しては完了日時を記録する
 
-クラスベースで実装し、それぞれのメソッドにドキュメントを付けてください。
+## AI モデル
+
+- gemini-2.5-flash を利用
 ```
 
-### 5-2. ADK ドキュメントを参照させる
-
-より高度な実装のために、ADK のドキュメントを参照するよう指示します：
+### 仕様に基づいてエージェントを実装させる
 
 ```
-docs/adk-docs のドキュメントを参照して、
-ADK のベストプラクティスに従った実装に改善してください。
+@agents/task_manager/readme.md にタスクマネージャーエージェントの仕様を記載しました
+
+agents/task_manager/agent.py に仕様に記載したタスク管理エージェントを実装してください
 ```
 
-### 5-3. テストコードの生成
+適宜コードを修正したり, Gemini と会話してタスク管理エージェントを完成させてください
+
+```bash
+cd agents && adk web --reload --port 8080
+```
+
+### リファクタリングやベストプラクティスの適用
+
+より高度な実装のために, ADK のドキュメントを参照するよう指示します
+( GEMINI.md にも一応記載してあるのですが,明示的に指定してみます. このタスクは AI の期限によっては失敗する可能性があります... )
+
+```
+@docs/adk-docs のドキュメントを参照して,
+ADK のベストプラクティスに従った実装にリファクタリングしてみてください
+```
+
+### テストコードの生成 (チャレンジ問題)
 
 Gemini Code Assist にテストコードの生成を依頼します：
 
 ```
-agents/task_manager_agent.py のユニットテストを
-agents/test_task_manager_agent.py に作成してください。
-pytest を使用してください。
+@agents/task_manager/agent.py のユニットテストを @agents/task_manager/test_agent.py に作成します
+
+- pytest を使用します
+- テストのお作法は t_wada の TDD 従ってください
 ```
 
-生成されたテストを実行してみましょう：
-
-```bash
-pytest agents/test_task_manager_agent.py -v
-```
-
-## ステップ 6: 外部 API と連携するエージェントを作る
-
-最後に、外部 API と連携する天気情報エージェントを作成します。
-
-### 6-1. デモ版の作成
-
-まずはダミーデータを返すデモ版から始めましょう。Gemini Code Assist に指示します：
+生成されたテストを AI に実行させて, エラーや失敗がないか, あれば適宜修正してもらいましょう
 
 ```
-agents/weather_agent.py を作成してください。
-
-以下の機能を持つ天気情報エージェント（デモ版）を実装してください：
-- 都市名を受け取る
-- ダミーの天気情報を返す（気温、天気、湿度）
-- 主要都市（東京、大阪、札幌、福岡）に対応
-- 存在しない都市の場合はエラーを返す
-- 天気情報を見やすくフォーマットして表示
-
-クラスベースで実装してください。
+`pytest agents/test_task_manager_agent.py -v`
+を実行して, テストが失敗したら修正してください
 ```
 
-### 6-2. エージェントの実行
+## refs
 
-```bash
-python agents/weather_agent.py
-```
-
-### 6-3. 機能の拡張（チャレンジ）
-
-Gemini Code Assist に以下のような拡張を依頼してみましょう：
-
-```
-このエージェントに以下の機能を追加してください：
-1. 複数都市の天気を一度に取得できる機能
-2. 天気によってアイコン（絵文字）を表示する機能
-3. JSON 形式でデータをエクスポートする機能
-```
-
-## ステップ 7: Gemini Code Assist の便利な機能を使う
-
-### 7-1. コードの説明を求める
-
-既存のコードを理解したい時：
-
-```bash
-gemini explain agents/task_manager_agent.py
-```
-
-### 7-2. コードのリファクタリング
-
-コードの改善提案を受ける：
-
-```bash
-gemini refactor agents/weather_agent.py
-```
-
-### 7-3. ドキュメントの生成
-
-README を自動生成：
-
-```bash
-gemini generate-docs agents/
-```
-
-### 7-4. バグの修正
-
-エラーが出た時に修正を依頼：
-
-```bash
-gemini fix agents/greeting_agent.py "ImportError: No module named 'datetime'"
-```
-
-## まとめ
-
-このチュートリアルでは、以下のことを**Gemini Code Assist との対話を通じて**学びました：
-
-1. **Gemini Code Assist の基本的な使い方**
-   - チャットモードでの対話
-   - コード生成の指示の出し方
-   - 段階的な機能追加の依頼方法
-
-2. **AI との協働開発**
-   - 自然言語での要件の伝え方
-   - 生成されたコードのレビューと改善依頼
-   - ドキュメントを参照させる方法
-
-3. **実用的なエージェント開発**
-   - シンプルなエージェントから始める
-   - 段階的に機能を追加する
-   - テストコードの生成と実行
-
-4. **Gemini Code Assist の便利機能**
-   - コードの説明・リファクタリング
-   - ドキュメント生成
-   - バグ修正の支援
-
-## 次のステップ
-
-### さらに学びたい方へ
-
-- **ADK の公式ドキュメント**（`docs/adk-docs`）を読んで、より高度な機能を学ぶ
-- **実際の API と連携**するエージェントを作成する（例：天気 API、ニュース API）
-- **マルチエージェントシステム**を構築する
-- **エージェント間の連携**を実装する
-
-### チャレンジ課題
-
-Gemini Code Assist を使って、以下のエージェントを作成してみましょう：
-
-1. **ファイル管理エージェント**
-   - ファイルの検索、コピー、移動
-   - ディレクトリの作成・削除
-
-2. **データ分析エージェント**
-   - CSV ファイルの読み込み
-   - 基本的な統計情報の表示
-   - グラフの生成
-
-3. **チャットボットエージェント**
-   - ユーザーとの対話
-   - 簡単な質問応答
-   - コンテキストの保持
-
-## トラブルシューティング
-
-### Gemini Code Assist が動かない
-
-```bash
-# gcloud を最新版に更新
-gcloud components update
-
-# 再度認証
-gcloud auth login
-```
-
-### 生成されたコードにエラーがある
-
-Gemini Code Assist に具体的なエラーメッセージを伝えて修正を依頼しましょう：
-
-```bash
-gemini fix agents/your_agent.py "エラーメッセージをここに貼り付け"
-```
-
-## リソース
-
-- [ADK Documentation](https://github.com/google/adk-docs)
-- [Gemini Code Assist Documentation](https://cloud.google.com/gemini/docs/codeassist)
-- [Cloud Shell Tutorials](https://cloud.google.com/shell/docs/cloud-shell-tutorials)
-- [Python 公式ドキュメント](https://docs.python.org/ja/3/)
-
-## フィードバック
-
-このチュートリアルについてのご意見・ご感想をお待ちしています！
-
----
-
-**Enjoy coding with Gemini Code Assist!** 🚀
+- [ADK Documentation](https://google.github.io/adk-docs/)
+- [Gemini Code Assist Documentation](https://github.com/google-gemini/gemini-cli/blob/main/docs/get-started/index.md)
