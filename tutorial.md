@@ -6,40 +6,11 @@
 
 Gemini Code Assist に指示を出しながら, 実際にコードを生成/改善していく過程を学びます.
 
-## このチュートリアルで学ぶこと
+## ここで学べそうなこと
 
-- Gemini Code Assist の基本的な使い方
-- AI との対話でコードを生成する方法
-- ADK ドキュメントを参照しながらエージェントを開発する方法
-
-## ステップ 1: 環境の準備
-
-下のボタンをクリックして、Cloud Shell でこのチュートリアルを開始しましょう。
-
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/jupemara/hands-on-gemini-code-assist.git&cloudshell_git_branch=tutorial&cloudshell_tutorial=tutorial.md)
-
-ボタンをクリックすると：
-1. 自動的にリポジトリ（tutorial ブランチ）がクローンされます
-2. Cloud Shell エディタが開きます
-3. このチュートリアルが右側のパネルに表示されます
-
-### ディレクトリ構造の確認
-
-セットアップが完了したら、ディレクトリ構造を確認しましょう。
-
-```bash
-tree -L 2
-```
-
-以下のような構造になっているはずです：
-
-```
-.
-├── agents/          # ここにエージェントを作成していきます
-├── docs/
-│   └── adk-docs/   # ADK の公式ドキュメント
-└── tutorial.md      # このファイル
-```
+- Gemini Code Assist の使い方
+- Gemini との対話でコードを生成する方法
+- ドキュメントを参照させながら開発する方法
 
 ## ステップ 2: Gemini Code Assist のセットアップ
 
@@ -58,6 +29,8 @@ Gemini Code Assist が使えることを確認します。
 ```bash
 gemini --version
 ```
+
+不要!! なぜなら勝手に gemini コマンド入っとる
 
 ## ステップ 3: ADK ドキュメントを確認する
 
