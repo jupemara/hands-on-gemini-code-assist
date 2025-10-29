@@ -71,8 +71,7 @@ git submodule update --init --recursive
 この段階でドキュメントの内容を Gemini Code Assist に読み込ませることもできます
 
 ```text
-# プロンプト
-@docs/adk-docs にはなんのドキュメントがありますか??
+docs/adk-docs/docs/get-started/ にはなんのドキュメントがありますか??
 ```
 
 ## ステップ 4: Gemini Code Assist で最初のエージェントを作る
