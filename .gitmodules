@@ -1,0 +1,3 @@
+[submodule "docs/adk-docs"]
+	path = docs/adk-docs
+	url = https://github.com/google/adk-docs.git
