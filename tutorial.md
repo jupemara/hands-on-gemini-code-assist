@@ -21,7 +21,7 @@ Gemini Code Assist に指示を出しながら、実際にコードを生成・�
 
 下のボタンをクリックして、Cloud Shell でこのチュートリアルを開始しましょう。
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/your-repo/hands-on-gemini-code-assist.git&cloudshell_git_branch=tutorial&cloudshell_tutorial=tutorial.md)
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/jupemara/hands-on-gemini-code-assist.git&cloudshell_git_branch=tutorial&cloudshell_tutorial=tutorial.md)
 
 ボタンをクリックすると：
 1. 自動的にリポジトリ（tutorial ブランチ）がクローンされます
