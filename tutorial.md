@@ -70,23 +70,31 @@ git submodule update --init --recursive
 
 この段階でドキュメントの内容を Gemini Code Assist に読み込ませることもできます
 
-```text
-docs/adk-docs/docs/get-started/ にはなんのドキュメントがありますか??
+```
+@docs/adk-docs/docs/get-started/ にはなんのドキュメントがありますか??
 ```
 
-## ステップ 4: Gemini Code Assist で最初のエージェントを作る
+## ADK 環境構築
 
-それでは、Gemini Code Assist を使って最初のエージェントを作成してみましょう。
+Python の仮想環境を作成して, ADK をインストールします
 
-### 4-1. 挨拶エージェントの作成
-
-Gemini Code Assist に以下のように指示します：
+### 仮想環境の作成
 
 ```bash
-gemini chat
+python -m venv .venv
 ```
 
-チャットモードで以下のように質問してみましょう：
+### ADK のインストール
+
+```bash
+pip install google-adk
+```
+
+## Gemini Code Assist で最初のエージェントを作る
+
+Gemini Code Assist を使って最初のエージェントを作成してみましょう
+
+### 4-1. 挨拶エージェントの作成
 
 ```
 シンプルな挨拶エージェントを agents/greeting_agent.py に作成してください。
