@@ -45,21 +45,35 @@ gcloud auth application-default login --no-launch-browser
 
 ## Gemini CLI がインストールされているか確認
 
+Cloud Shell Editor の terminal ペインを出現させます.
+画面左上の `terminal` ボタンをクリックしてください ( File Edit Selection View Go Run **Terminal** Help と並んでいます ) 
+
 `gemini` コマンドが使えることを確認します
 
 ```bash
 gemini --version
 ```
 
-## ステップ 3: ADK ドキュメントを確認する
-
-ADK のドキュメントを確認して、どんなエージェントが作れるか見てみましょう。
+Gemini CLI を立ち上げておきます (以降のエージェントのやり取りは, ここか Cloud Shell Editor の右側の Gemini ペインから行います)
 
 ```bash
-ls docs/adk-docs
+gemini
 ```
 
-ドキュメントの内容を Gemini Code Assist に読み込ませることもできます。
+## ADK ドキュメントをセットアップする
+
+コーディングエージェントに ADK の公式ドキュメントを読ませるために手元に最新版のドキュメントをダウンロードします.
+
+```bash
+git submodule update --init --recursive
+```
+
+この段階でドキュメントの内容を Gemini Code Assist に読み込ませることもできます
+
+```text
+# プロンプト
+@docs/adk-docs にはなんのドキュメントがありますか??
+```
 
 ## ステップ 4: Gemini Code Assist で最初のエージェントを作る
 
