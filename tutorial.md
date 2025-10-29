@@ -43,7 +43,7 @@ gcloud auth application-default login --no-launch-browser
 
 を実行してログインを行います (ログイン URL が出てくるので, URL をクリック, verification code を入力しましょう)
 
-## Gemini CLI がインストールされているか確認
+## Gemini CLI の起動
 
 Cloud Shell Editor の terminal ペインを出現させます.
 画面左上の `terminal` ボタンをクリックしてください ( File Edit Selection View Go Run **Terminal** Help と並んでいます ) 
