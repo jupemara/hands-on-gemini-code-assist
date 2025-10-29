@@ -2,14 +2,9 @@
 
 ## 概要
 
-このチュートリアルでは、Google Cloud Shell 上で **Gemini Code Assist (Gemini CLI)** を使用して、Agent Development Kit (ADK) によるエージェントを**対話的に開発する体験**をします。
+このチュートリアルでは, Google Cloud Shell 上で **Gemini Code Assist (Gemini CLI)** を使用して, Agent Development Kit (ADK) によるエージェントを**対話的に開発する体験**をします.
 
-Gemini Code Assist に指示を出しながら、実際にコードを生成・改善していく過程を学びます。
-
-## 前提条件
-
-- Google アカウント
-- 基本的な Python の知識
+Gemini Code Assist に指示を出しながら, 実際にコードを生成/改善していく過程を学びます.
 
 ## このチュートリアルで学ぶこと
 
